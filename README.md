@@ -40,6 +40,7 @@ Gerard Image Stuff
         -ID
         -Password
         -Name
+        -Image
         -Score (def: 0)
 
     #### Challenge
@@ -50,13 +51,15 @@ Gerard Image Stuff
         -score
 
     #### Accepted
+        -ID
         -user_id
-        -challenge_id
+        -challenge_id (ref: challenge.id)
         -expiresAt
 
     #### Completed
+        -accepted_id (ref: accepted.id)
         -user_id
-        -challenge_id
+        -challenge_id (ref: challenge.id)
         -link to media
 
 
