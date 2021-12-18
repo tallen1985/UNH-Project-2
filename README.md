@@ -37,22 +37,22 @@ Gerard Image Stuff
 
     ### Tables
     #### User
-        -ID
-        -Password
-        -Name
-        -Score (def: 0)
+        -id
+        -password
+        -name
+        -score
 
     #### Challenge
-        -ID
-        -Name of the challenge
-        -User_id (ref: user.id)
-        -CreateAt
+        -id
+        -name
+        -user_id (ref: user.id)
+        -create_at (automatically made)
         -score
 
     #### Accepted
         -user_id
         -challenge_id
-        -expiresAt
+        -expires_at 
 
     #### Completed
         -user_id
