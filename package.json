@@ -1,0 +1,31 @@
+{
+  "name": "unh-project-2",
+  "version": "1.0.0",
+  "description": "social media used to challenge friends",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "eslint": "^8.5.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tallen1985/UNH-Project-2.git"
+  },
+  "author": "UNH Bootcamp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tallen1985/UNH-Project-2/issues"
+  },
+  "homepage": "https://github.com/tallen1985/UNH-Project-2#readme"
+}
