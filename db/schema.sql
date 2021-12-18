@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS booya_db;
+CREATE DATABASE booya_db;
