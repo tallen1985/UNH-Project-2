@@ -29,7 +29,7 @@ Accepted.init(
        },
        expiresAt: {
            type: DataTypes.TIME,
-           allowNull: false,
+           allowNull: true,
        }
     },
     {

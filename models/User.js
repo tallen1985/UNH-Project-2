@@ -20,10 +20,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // image: {
-    //   type: DataTypes.???
-    // allowNull: true,
-    // }
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     score: {
       type: DataTypes.INTEGER,
       allowNull: false,

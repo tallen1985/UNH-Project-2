@@ -22,12 +22,11 @@ Challenge.belongsTo(User, {
 
 Challenge.hasMany(Accepted, {
     foreignKey: "challenge_id",
-})
+});
 
 Challenge.hasMany(Completed, {
     foreignKey: "challenge_id",
-})
-
+});
 
 Accepted.belongsTo(Challenge, {
     foreignKey: "challenge_id",
@@ -35,7 +34,7 @@ Accepted.belongsTo(Challenge, {
 
 Accepted.hasMany(Completed, {
     foreignKey: "accepted_id"
-})
+});
 
 Completed.belongsTo(Accepted, {
     foreignKey: "accepted_id",

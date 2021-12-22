@@ -12,7 +12,7 @@ Completed.init(
                 model: "accepted",
                 key: "id"
             },
-        };
+        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -29,9 +29,10 @@ Completed.init(
                 key: "id",
             },
         },
-        // link: {
-        //     media?
-        // }
+        link_to_media: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        }
     },
     {
         sequelize,

@@ -23,10 +23,6 @@ Challenge.init(
             key: "id",
           },
        },
-       createdAt: {
-           type: DataTypes.TIME,
-           allowNull: false,
-       },
        score: {
         type: DataTypes.INTEGER,
         allowNull: false,
