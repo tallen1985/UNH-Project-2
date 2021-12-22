@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const { databaseVersion } = require('../../../../unh-por-virt-fsf-pt-09-2021-u-c/13-ORM/01-Activities/23-Ins_One-to-Many/config/connection');
 const sequelize = require('../config/connection');
 
 class Accepted extends Model {}
