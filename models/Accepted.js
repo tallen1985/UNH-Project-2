@@ -13,7 +13,7 @@ Accepted.init(
        },
        user_id: {
            type: DataTypes.INTEGER,
-           allowNull: false,
+           allowNull: true,
            references: {
             model: "user",
             key: "id",
@@ -21,16 +21,21 @@ Accepted.init(
        },
        challenge_id: {
            type: DataTypes.INTEGER,
-           allowNull: false,
+           allowNull: true,
            references: {
                model: "challenge",
                key: "id",
            },
        },
-       expiresAt: {
-           type: DataTypes.TIME,
-           allowNull: true,
-       }
+       completed: {
+           type: DataTypes.BOOLEAN,
+           defaultValue: false,
+           allowNull: false,
+       },
+    //    expiresAt: {// perhaps use a function to assist with this
+    //        type: DataTypes.TIME,
+    //        allowNull: true,
+    //    }
     },
     {
         sequelize,
