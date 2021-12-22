@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authorize = require('../../utils/authorize');
 const { User, Challenge } = require('../../models/index');
 
 router.post('/signup', async (req, res) => {
@@ -50,7 +51,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validated = await userData.validatePassword(req.body.password);
+    const validated = await userData.checkPassword(req.body.password);
 
     if (validated) {
       req.session.save(() => {
