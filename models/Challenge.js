@@ -28,6 +28,10 @@ Challenge.init( /// make challenges on delete cascade. so that users who accepte
         allowNull: false,
         defaultValue: 5,
       },
+      category: {
+          type: DataTypes.STRING,
+          allowNull: false,
+      }
     },
     {
         sequelize,
