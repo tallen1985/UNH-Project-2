@@ -1,27 +1,35 @@
 const router = require('express').Router();
 const authorize = require('../utils/authorize');
-const { User, Challenge } = require('../models');
+const { User, Challenge, Accepted } = require('../models');
 
 router.get('/', async (req, res) => {
-    if (req.session.logged_in) {
-        const userData = await User.findOne({
+  if (req.session.logged_in) {
+    const userPull = await User.findOne({
       where: {
-          id: req.session.user_id
-      }
-    })
-  };
-  
+        id: req.session.user_id,
+      },
+      include: [{ model: Accepted }],
+    });
 
-  if (!userData) {
-    res.redirect('/login');
+    const challengePull = await Challenge.findAll();
+
+    if (!userData) {
+      res.redirect('/login');
+    }
+    const data = [userPull].map((user) => user.get({ plain: true }));
+    const challenge = challengePull.map((challenge) =>
+      challenge.get({ plain: true })
+    );
+
+    res.render('dashboard', {
+      data,
+      challenge,
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
+    });
+  } else {
+    res.render('dashboard');
   }
-  const data = [userData].map((user) => user.get({ plain: true }));
-
-  res.render('home', {
-    data,
-    logged_in: req.session.logged_in,
-    user_name: req.session.user_name,
-  });
 });
 
 router.get('/login', (req, res) => {
@@ -30,6 +38,5 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('signup');
 });
-
 
 module.exports = router;
