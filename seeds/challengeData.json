@@ -1,0 +1,28 @@
+[
+    {
+      "name": "10 pushups",
+      "user_id": 1,
+      "score": 5
+    },
+    {
+      "name": "1 pullup",
+      "user_id": 2,
+      "score": 10
+    },
+    {
+      "name": "40sec sprint",
+      "user_id": 3,
+      "score": 8
+    },
+    {
+      "name": "100m dash",
+      "user_id": 4,
+      "score": 6
+    },
+    {
+      "name": "get 8 hours of sleep",
+      "user_id": 5,
+      "score": 20
+    }
+  ]
+  
