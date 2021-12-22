@@ -43,11 +43,12 @@ Gerard Image Stuff
         -Image
         -Score (def: 0)
 
+
     #### Challenge
-        -ID
-        -Name of the challenge
-        -User_id (ref: user.id)
-        -CreateAt
+        -id
+        -name
+        -user_id (ref: user.id)
+        -create_at (automatically made)
         -score
 
     #### Accepted
@@ -64,3 +65,4 @@ Gerard Image Stuff
 
 
 ## Link to project
+ 
