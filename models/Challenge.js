@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Challenge extends Model {}
 
-Challenge.init( /// make challenges on delete cascade. so that users who accepted the challenge and completed the challenge lost the challenge 
+Challenge.init( // make challenges on delete cascade. so that users who accepted the challenge and completed the challenge lost the challenge 
     {
        id: {
            type: DataTypes.INTEGER,
