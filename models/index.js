@@ -4,6 +4,7 @@ const Challenge = require('./Challenge');
 const Accepted = require('./Accepted');
 
 User.hasMany(Challenge, {
+
     foreignKey: "user_id",
     onDelete: "CASCADE",
 });
@@ -13,7 +14,7 @@ User.hasMany(Accepted, {
 });
 
 Challenge.belongsTo(User, {
-    foreignKey: "user_id",
+  foreignKey: 'user_id',
 });
 
 Challenge.hasMany(Accepted, {
@@ -23,9 +24,5 @@ Challenge.hasMany(Accepted, {
 Accepted.belongsTo(Challenge, {
     foreignKey: "challenge_id",
 });
-
-
-
-
 
 module.exports = { User, Challenge, Accepted };

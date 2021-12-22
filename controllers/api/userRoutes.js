@@ -1,5 +1,19 @@
 const router = require('express').Router();
+const authorize = require('../../utils/authorize');
 const { User, Challenge } = require('../../models/index');
+
+router.get('/', async (req, res) => {
+  const userData = await User.findAll({
+    include: [{ model: Challenge }],
+  });
+
+  if (!userData) {
+    res.status(400).json({ Message: 'No Users Found' });
+    return;
+  }
+
+  res.status(200).send(userData);
+});
 
 router.post('/signup', async (req, res) => {
   try {
@@ -50,7 +64,7 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validated = await userData.validatePassword(req.body.password);
+    const validated = await userData.checkPassword(req.body.password);
 
     if (validated) {
       req.session.save(() => {
