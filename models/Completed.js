@@ -19,7 +19,7 @@ Completed.init(
             references: {
                 model: "user",
                 key: "id",
-         },
+        },
         },
         challenge_id: {
             type: DataTypes.INTEGER,
