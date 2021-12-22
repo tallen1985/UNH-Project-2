@@ -2,6 +2,19 @@ const router = require('express').Router();
 const authorize = require('../../utils/authorize');
 const { User, Challenge } = require('../../models/index');
 
+router.get('/', async (req, res) => {
+  const userData = await User.findAll({
+    include: [{ model: Challenge }],
+  });
+
+  if (!userData) {
+    res.status(400).json({ Message: 'No Users Found' });
+    return;
+  }
+
+  res.status(200).send(userData);
+});
+
 router.post('/signup', async (req, res) => {
   try {
     const checkforUser = await User.findOne({

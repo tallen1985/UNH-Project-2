@@ -1,6 +1,35 @@
 const router = require('express').Router();
 const authorize = require('../../utils/authorize');
-const { User, Challenge, Accepted } = require('../../models/index');
+const { Accepted } = require('../../models/index');
+
+router.get('/', async (req, res) => {
+  const acceptedData = await Accepted.findAll();
+
+  if (!acceptedData) {
+    res.status(400).json({ Message: 'No Accepted Challenges Found' });
+    return;
+  }
+
+  res.status(200).send(acceptedData);
+});
+
+router.put('/completed', authorize, async (req, res) => {
+  try {
+    const acceptedData = await Accepted.update(
+      { completed: true },
+      {
+        where: {
+          id: req.body.accepted_id,
+        },
+      }
+    );
+  } catch (error) {
+    res
+      .status(500)
+      .json({ Message: 'Internal Server Error Please try again later' });
+    return;
+  }
+});
 
 router.post('/', authorize, async (req, res) => {
   try {
