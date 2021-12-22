@@ -21,12 +21,14 @@ router.get('/', async (req, res) => {
       challenge.get({ plain: true })
     );
 
-    res.render('home', {
+    res.render('dashboard', {
       data,
       challenge,
       logged_in: req.session.logged_in,
       user_name: req.session.user_name,
     });
+  } else {
+    res.render('dashboard');
   }
 });
 
