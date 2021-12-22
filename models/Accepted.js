@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const { databaseVersion } = require('../../../../unh-por-virt-fsf-pt-09-2021-u-c/13-ORM/01-Activities/23-Ins_One-to-Many/config/connection');
 const sequelize = require('../config/connection');
 
 class Accepted extends Model {}
@@ -13,7 +14,7 @@ Accepted.init(
        },
        user_id: {
            type: DataTypes.INTEGER,
-           allowNull: false,
+           allowNull: true,
            references: {
             model: "user",
             key: "id",
@@ -21,16 +22,21 @@ Accepted.init(
        },
        challenge_id: {
            type: DataTypes.INTEGER,
-           allowNull: false,
+           allowNull: true,
            references: {
                model: "challenge",
                key: "id",
            },
        },
-       expiresAt: {
-           type: DataTypes.TIME,
-           allowNull: true,
-       }
+       completed: {
+           type: DataTypes.BOOLEAN,
+           defaultValue: false,
+           allowNull: false,
+       },
+    //    expiresAt: {// perhaps use a function to assist with this
+    //        type: DataTypes.TIME,
+    //        allowNull: true,
+    //    }
     },
     {
         sequelize,
