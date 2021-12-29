@@ -2,7 +2,9 @@ const router = require('express').Router();
 const authorize = require('../utils/authorize');
 const { User, Challenge, Accepted } = require('../models');
 
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
+  // console.log('here')
+  // res.render('login')
   if (req.session.logged_in) {
     const userPull = await User.findOne({
       where: {
@@ -21,14 +23,15 @@ router.get('/', async (req, res) => {
       challenge.get({ plain: true })
     );
 
-    res.render('dashboard', {
+    res.render('index', {
+
       data,
       challenge,
       logged_in: req.session.logged_in,
       user_name: req.session.user_name,
     });
-  } else {
-    res.render('dashboard');
+  }else{
+    res.render('login');
   }
 });
 

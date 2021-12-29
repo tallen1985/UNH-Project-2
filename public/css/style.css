@@ -1,7 +1,21 @@
-.root {
-  --black-coffee: #3c3744ff;
-  --duke-blue: #090c9bff;
-  --iris: #3d52d5ff;
-  --light-steel-blue: #b4c5e4ff;
-  --ivory: #fbfff1ff;
+body {
+    background-color: #3C3744;
+}
+nav .prim li a{
+    color: #fff !important;
+}
+.min-box{margin-bottom: 20px;}
+.min-box header{
+    background-color: #090c9B;
+    color: #fff;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.post_link a {
+    text-decoration: none;
+    color: #b4c5e4;
+    font-weight: 600;
 }
