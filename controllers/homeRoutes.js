@@ -24,6 +24,7 @@ router.get('/', async (req, res, next) => {
     );
 
     res.render('index', {
+
       data,
       challenge,
       logged_in: req.session.logged_in,
