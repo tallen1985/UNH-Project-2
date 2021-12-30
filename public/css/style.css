@@ -1,21 +1,27 @@
 body {
-    background-color: #3C3744;
+  background-color: #3c3744;
 }
-nav .prim li a{
-    color: #fff !important;
+nav .prim li a {
+  color: #fff !important;
 }
-.min-box{margin-bottom: 20px;}
-.min-box header{
-    background-color: #090c9B;
-    color: #fff;
-    height: 56px;
-    line-height: 56px;
-    padding: 0 15px;
-    font-size: 15px;
-    font-weight: 500;
+.min-box {
+  margin-bottom: 20px;
+}
+.min-box header {
+  background-color: #090c9b;
+  color: #fff;
+  height: 56px;
+  line-height: 56px;
+  padding: 0 15px;
+  font-size: 15px;
+  font-weight: 500;
 }
 .post_link a {
-    text-decoration: none;
-    color: #b4c5e4;
-    font-weight: 600;
+  text-decoration: none;
+  color: #b4c5e4;
+  font-weight: 600;
+}
+.challengeBox p {
+  height: auto;
+  margin: 0;
 }

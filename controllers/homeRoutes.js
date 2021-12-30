@@ -10,7 +10,12 @@ router.get('/', authorize, async (req, res, next) => {
     include: [{ model: Accepted }],
   });
 
-  const challengePull = await Challenge.findAll();
+  const challengePull = await Challenge.findAll({
+    include: {
+      model: User,
+      attributes: ['name'],
+    },
+  });
 
   if (!userPull) {
     res.redirect('/login');
