@@ -2,37 +2,35 @@ const router = require('express').Router();
 const authorize = require('../utils/authorize');
 const { User, Challenge, Accepted } = require('../models');
 
-router.get('/', async (req, res, next) => {
-  // console.log('here')
-  // res.render('login')
-  if (req.session.logged_in) {
-    const userPull = await User.findOne({
-      where: {
-        id: req.session.user_id,
-      },
-      include: [{ model: Accepted }],
-    });
+router.get('/', authorize, async (req, res, next) => {
+  const userPull = await User.findOne({
+    where: {
+      id: req.session.user_id,
+    },
+    include: [{ model: Accepted }],
+  });
 
-    const challengePull = await Challenge.findAll();
+  const challengePull = await Challenge.findAll({
+    include: {
+      model: User,
+      attributes: ['name'],
+    },
+  });
 
-    if (!userData) {
-      res.redirect('/login');
-    }
-    const data = [userPull].map((user) => user.get({ plain: true }));
-    const challenge = challengePull.map((challenge) =>
-      challenge.get({ plain: true })
-    );
-
-    res.render('index', {
-
-      data,
-      challenge,
-      logged_in: req.session.logged_in,
-      user_name: req.session.user_name,
-    });
-  }else{
-    res.render('login');
+  if (!userPull) {
+    res.redirect('/login');
   }
+  const data = [userPull].map((user) => user.get({ plain: true }));
+  const challenge = challengePull.map((challenge) =>
+    challenge.get({ plain: true })
+  );
+
+  res.render('index', {
+    data,
+    challenge,
+    logged_in: req.session.logged_in,
+    user_name: req.session.user_name,
+  });
 });
 
 router.get('/login', (req, res) => {
