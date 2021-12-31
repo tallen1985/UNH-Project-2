@@ -11,6 +11,7 @@ router.get('/', authorize, async (req, res, next) => {
   });
 
   const challengePull = await Challenge.findAll({
+    order: [['createdAt', 'DESC']],
     include: {
       model: User,
       attributes: ['name'],
@@ -20,7 +21,7 @@ router.get('/', authorize, async (req, res, next) => {
   if (!userPull) {
     res.redirect('/login');
   }
-  const data = [userPull].map((user) => user.get({ plain: true }));
+  const data = userPull.dataValues;
   const challenge = challengePull.map((challenge) =>
     challenge.get({ plain: true })
   );

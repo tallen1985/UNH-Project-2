@@ -7,6 +7,7 @@ router.post('/', authorize, async (req, res) => {
     const challengeData = await Challenge.create({
       name: req.body.name,
       score: req.body.score,
+      category: req.body.category,
       user_id: req.session.user_id,
     });
 
@@ -17,6 +18,7 @@ router.post('/', authorize, async (req, res) => {
 
     res.status(200).send(challengeData);
   } catch (err) {
+    console.log(err);
     res
       .status(500)
       .json({ Message: 'Internal Server Error Please try again later' });
