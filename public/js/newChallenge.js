@@ -11,7 +11,7 @@ postChallenge.addEventListener('click', async (e) => {
     return;
   }
   if (challengeScore.value > 20 || challengeScore.value <= 0) {
-    alert('Please enter a valid Point Value (between 1 and 20)';
+    alert('Please enter a valid Point Value (between 1 and 20)');
     return;
   }
 
