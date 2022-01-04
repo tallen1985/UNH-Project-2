@@ -237,7 +237,7 @@
                 <input type="file" name="bannerImage" />
                 <button type="submit">Send</button>
               </form> -->
-          <form>
+          <form enctype="multipart/form-data">
             <div class='mb-3'>
               <label for='challengeName' class='form-label'>Name</label>
               <input
@@ -277,7 +277,7 @@
               <div
                 style='margin: 0px 0 0 0; border: 1px solid #e1e1e1; background: #e1e1e1; border-radius: 3px; padding: 20px'
               >
-                <div class='my-dropzone'></div>
+                <div class="dropzone" id="myDropzone"></div>
               </div>
             </div>
           </form>

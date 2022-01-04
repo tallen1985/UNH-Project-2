@@ -17,6 +17,12 @@ router.get('/', authorize, async (req, res, next) => {
       attributes: ['name'],
     },
   });
+  // const acceptedPull = await Accepted.findAll({
+  //   include: {
+  //     model: User,
+  //     attributes: ['user_id']
+  //   }
+  // })
 
   if (!userPull) {
     res.redirect('/login');
@@ -25,10 +31,14 @@ router.get('/', authorize, async (req, res, next) => {
   const challenge = challengePull.map((challenge) =>
     challenge.get({ plain: true })
   );
+  // const accepted_count = acceptedPull.maps((accepted_count) => {
+  //   accepted_count.get({ plain: true })
+  // });
 
   res.render('index', {
     data,
     challenge,
+    // accepted_count,
     logged_in: req.session.logged_in,
     user_name: req.session.user_name,
   });
