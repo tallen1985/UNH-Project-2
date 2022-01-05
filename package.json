@@ -5,6 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.28.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
     "eslint": "^8.5.0",
