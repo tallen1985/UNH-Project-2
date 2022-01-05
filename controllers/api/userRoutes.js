@@ -111,35 +111,4 @@ router.post('/image-upload', async (req, res) => {
   }
 });
 
-// collected image from a user
-// const data = {
-//   image: request.body.image,
-// };
-// // upload image here
-// cloudinary.uploader
-//   .upload(data.image)
-//   .then((result) => {
-//     updateUser(result);
-//     response.status(200).send({
-//       message: 'success',
-//       result,
-//     });
-//   })
-//   .catch((error) => {
-//     response.status(500).send({
-//       message: 'failure',
-//       error,
-//     });
-//   });
-// const updateUser = async (result) => {
-//   const updateData = await User.update(
-//     { image: result.url },
-//     {
-//       where: {
-//         id: req.session.user_id,
-//       },
-//     }
-//   );
-// };
-// });
 module.exports = router;
