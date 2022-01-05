@@ -4,7 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 
 const sequelize = require('./config/connection');
 
@@ -26,9 +26,9 @@ const sess = {
 };
 
 cloudinary.config({
-  cloud_name: 'hokdebgd8',
-  api_key: '547924252344177',
-  api_secret: '8mLgHjUjaJArpU2VQc7eamF1b0Q',
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.api_key,
+  api_secret: process.env.api_secret,
 });
 
 app.use(session(sess));
