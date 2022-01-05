@@ -23,6 +23,7 @@ const updateUserImage = async (url) => {
   } else {
     console.log('error');
   }
+  document.location.reload();
 };
 
 document.getElementById('upload_widget').addEventListener(

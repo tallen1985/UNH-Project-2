@@ -1,17 +1,35 @@
 <body>
-  <div>
-    <button id='upload_widget' class='cloudinary-button'>Upload files</button>
-  </div>
+  <div class='m-5 p-3 bg-white'>
+    <div class='d-flex flex-wrap justify-content-evenly align-items-center'>
+      <img src={{{data.image}}} class='w-30' />
+      <h1>Name: {{data.name}}</h1>
+    </div>
+    <div class='text-center p-3'>
+      <button id='upload_widget' class='cloudinary-button'>Upload New Image</button>
+    </div>
 
-  <div class='container'>
-    <h2>Active Challenges</h2>
-    {{#if user.challenges}}
-      <li>{{challenges}}</li>
-    {{else}}
-      <li>No active challenges</li>
-    {{/if}}
   </div>
+  <div class='bg-white text-dark text-center mx-5'>
+    <div class='container'>
+      <h2>Active Challenges</h2>
+      {{#if user.challenges}}
+        <li>{{challenges}}</li>
+      {{else}}
+        <li>No active challenges</li>
+      {{/if}}
+    </div>
 
+    <div class='container'>
+      <h2>Created Challenges</h2>
+      {{#if userCreated}}
+        {{#each userCreated}}
+          <li>{{name}}</li>
+        {{/each}}
+      {{else}}
+        <li>No Created challenges</li>
+      {{/if}}
+    </div>
+  </div>
 </body>
 <script
   src='https://upload-widget.cloudinary.com/global/all.js'
