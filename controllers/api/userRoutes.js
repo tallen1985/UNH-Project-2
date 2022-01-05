@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authorize = require('../../utils/authorize');
 const { User, Challenge } = require('../../models/index');
+const cloudinary = require('cloudinary').v2;
 
 router.get('/', async (req, res) => {
   const userData = await User.findAll({
@@ -90,6 +91,23 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+// image upload API
+router.post('/image-upload', async (req, res) => {
+  const updateData = await User.update(
+    { image: JSON.stringify(req.body.url) },
+    {
+      where: {
+        id: req.session.user_id,
+      },
+    }
+  );
+  if (updateData > 0) {
+    res.status(200).json({ message: 'Added image Successfully' });
+  } else {
+    res.status(400).json({ message: 'Transfer failed' });
   }
 });
 

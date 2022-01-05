@@ -4,7 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 
 const sequelize = require('./config/connection');
 
@@ -16,8 +16,11 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: 'TroyCasenSamanthaGerard',
-  cookie: {},
+  secret: '3b9b909fd09ff97ae0d0a127f09e7453',
+  cookie: {
+    //maxAge is for a day
+    maxAge: 1000 * 60 * 60 * 24,
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -26,9 +29,9 @@ const sess = {
 };
 
 cloudinary.config({
-  cloud_name: 'hokdebgd8',
-  api_key: '547924252344177',
-  api_secret: '8mLgHjUjaJArpU2VQc7eamF1b0Q',
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.api_key,
+  api_secret: process.env.api_secret,
 });
 
 app.use(session(sess));
