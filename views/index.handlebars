@@ -145,11 +145,14 @@
           <div class='min-box bg-light p-4'>
             <div class='row'>
               <div class='col-md-3'>
+
                 <div
-                  class=''
+                  class='text-center'
                   style='width: 80px; height: 80px; background:#3C3744'
                 >
-
+                  {{#if data.image}}
+                    <img src={{{data.image}}} class='h-100' />
+                  {{/if}}
                 </div>
               </div>
               <div class='col-md-9 d-flex flex-wrap'>
