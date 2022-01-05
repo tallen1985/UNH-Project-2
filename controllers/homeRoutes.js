@@ -25,10 +25,16 @@ router.get('/', authorize, async (req, res, next) => {
   const challenge = challengePull.map((challenge) =>
     challenge.get({ plain: true })
   );
+  const userCreated = challenge.filter((c) => {
+    return c.user_id === req.session.user_id;
+  });
+  const numCreated = userCreated.length;
 
   res.render('index', {
     data,
     challenge,
+    userCreated,
+    numCreated,
     logged_in: req.session.logged_in,
     user_name: req.session.user_name,
   });

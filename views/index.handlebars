@@ -1,76 +1,9 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-md-8'>
-      <nav
-        class='navbar navbar-expand-lg navbar-light sticky-top'
-        style='background-color: #090c9B'
-      >
-        <div class='container'>
-          <a class='navbar-brand' href='#' style='color: #fff'>BOOYA<span
-              style='font-weight: 700'
-            >!</span></a>
-          <button
-            class='navbar-toggler'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#navbarSupportedContent'
-            aria-controls='navbarSupportedContent'
-            aria-expanded='false'
-            aria-label='Toggle navigation'
-          >
-            <span class='navbar-toggler-icon'></span>
-          </button>
-          <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul class='navbar-nav me-auto mb-2 mb-lg-0 prim'>
-              <li class='nav-item'>
-                <a class='nav-link' aria-current='page' href='#'>Popular
-                  Challenges</a>
-              </li>
-            </ul>
-            <div class='d-flex'>
-              <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
-                <li class='nav-item'>
-                  <a
-                    class='nav-link'
-                    aria-current='page'
-                    data-bs-toggle='modal'
-                    data-bs-target='#createnewchallenge'
-                    style='color: #fff; cursor: pointer;'
-                  >Post a challenge</a>
-                </li>
-                <li class='nav-item dropdown'>
-                  <a
-                    class='nav-link dropdown-toggle'
-                    href='#'
-                    id='navbarDropdown'
-                    role='button'
-                    data-bs-toggle='dropdown'
-                    style='color: #fff'
-                    aria-expanded='false'
-                  >
-                    Profile
-                  </a>
-                  <ul class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                    <li><a
-                        class='dropdown-item'
-                        href='/dashboard'
-                      >Dashboard</a></li>
-                    <li><hr class='dropdown-divider' /></li>
-                    <li><a class='dropdown-item' id='logoutBtn'>Logout</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       <div class='row'>
-        <div class='col-md-4'>
+        <div class='col-md-3 mt-2'>
           <div class='row'>
             <div class='col-md-12'>
               <div class='min-box'>
-                <header style='margin: 15px 0 0 0'>
+                <header >
                   <p>View by categories</p>
                 </header>
                 <content>
@@ -84,10 +17,10 @@
             </div>
           </div>
         </div>
-        <div class='col-md-8'>
+        <div class='col-md-5 mt-2'>
           <div class='row'>
             {{#each challenge}}
-              <div class='col-md-12 challengeBox' style='margin-top: 15px;'>
+              <div class='col-md-12 challengeBox' >
                 <div
                   class='text-center d-flex flex-column justify-content-evenly'
                   style='background-color: #fff; height: 300px;'
@@ -111,9 +44,7 @@
             {{/each}}
           </div>
         </div>
-      </div>
-    </div>
-    <div class='col-md-4'>
+    <div class='col-md-4 mt-2'>
       <div class='row'>
         <div class='col-md-12'>
           <div class='min-box'>
@@ -141,32 +72,29 @@
             </content>
           </div>
         </div>
-        <div class='col-md-12'>
-          <div class='min-box bg-light p-4'>
-            <div class='row'>
-              <div class='col-md-3'>
-
-                <div
-                  class='text-center'
-                  style='width: 80px; height: 80px; background:#3C3744'
-                >
+        <div class='container-fluid'>
+          <div class='container-fluid min-box bg-light p-4'>
+            <div class='row d-flex flex-wrap flex-row justify-content-evenly align-items-center'>
+              <div class='col-md-4 text-center bg-dark'>
                   {{#if data.image}}
-                    <img src={{{data.image}}} class='h-100' />
+                    <img src={{{data.image}}} class='img-fluid' />
                   {{/if}}
                 </div>
+                <div class="col-md-8 text-center">
+                  <p class="fs-2">{{data.name}}</p>
+                </div>
               </div>
-              <div class='col-md-9 d-flex flex-wrap'>
-                <h6>{{data.name}}</h6>
-                <div class='row'>
-                  <div class='col-md-4' style='text-align: center'>
+              <div class='container-fluid mx-auto mt-3'>
+                <div class='d-flex flex-wrap flex-row align-items-center justify-content-evenly'>
+                  <div class='px-3' style='text-align: center'>
                     Points
                     <p style='font-weight: 700;'>{{data.score}}</p>
                   </div>
-                  <div class='col-md-4' style='text-align: center'>
+                  <div class='px-3' style='text-align: center'>
                     Created
-                    <p style='font-weight: 700;'>5</p>
+                    <p style='font-weight: 700;'>{{numCreated}}</p>
                   </div>
-                  <div class='col-md-4' style='text-align: center'>
+                  <div class='px-3' style='text-align: center'>
                     Completed
                     <p style='font-weight: 700;'>2</p>
                   </div>
@@ -175,6 +103,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
