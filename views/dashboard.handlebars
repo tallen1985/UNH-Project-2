@@ -1,7 +1,13 @@
 <body>
   <div class='m-5 p-3 bg-white'>
-    <div class='d-flex flex-wrap justify-content-evenly align-items-center'>
-      <img src={{{data.image}}} class='w-30' />
+    <div
+      class='container-fluid d-flex flex-wrap justify-content-evenly align-items-center'
+    >
+      {{#if data.image}}
+        <img id='userImage' src={{{data.image}}} class='img-fluid' />
+      {{else}}
+        <img id='userImage' src='/images/noImage.jpeg' class='img-fluid' />
+      {{/if}}
       <h1>Name: {{data.name}}</h1>
     </div>
     <div class='text-center p-3'>

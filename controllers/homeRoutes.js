@@ -14,7 +14,7 @@ router.get('/', authorize, async (req, res, next) => {
     order: [['createdAt', 'DESC']],
     include: {
       model: User,
-      attributes: ['name'],
+      attributes: ['name', 'image'],
     },
   });
 
@@ -35,6 +35,11 @@ router.get('/', authorize, async (req, res, next) => {
   const challenge = challengePull.map((challenge) =>
     challenge.get({ plain: true })
   );
+  const challengeByType = {
+    physical: challenge.filter((c) => c.category == 'physical'),
+    mental: challenge.filter((c) => c.category == 'mental'),
+    other: challenge.filter((c) => c.category == 'other'),
+  };
   const accepted = acceptedPull.map((accepted) =>
     accepted.get({ plain: true })
   );
@@ -49,6 +54,7 @@ router.get('/', authorize, async (req, res, next) => {
     accepted,
     userCreated,
     numCreated,
+    challengeByType,
     logged_in: req.session.logged_in,
     user_name: req.session.user_name,
   });

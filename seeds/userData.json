@@ -1,26 +1,32 @@
 [
   {
     "name": "Sal",
-    "password": "password12345"
+    "password": "password12345",
+    "image": "/images/sal.jpeg"
   },
   {
     "name": "Lernantino",
-    "password": "password12345"
+    "password": "password12345",
+    "image": "/images/lernantino.png"
   },
   {
     "name": "Amiko",
-    "password": "password12345"
+    "password": "password12345",
+    "image": "/images/amiko.jpeg"
   },
   {
     "name": "Jordan",
-    "password": "password12345"
+    "password": "password12345",
+    "image": "/images/jordan.jpg"
   },
   {
     "name": "Blake",
-    "password": "password12345"
+    "password": "password12345",
+    "image": "/images/blake.png"
   },
   {
     "name": "Gary",
-    "password": "password54321"
+    "password": "password54321",
+    "image": "/images/gary.png"
   }
 ]

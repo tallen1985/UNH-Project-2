@@ -28,5 +28,11 @@
     "user_id": 5,
     "score": 20,
     "category": "other"
+  },
+  {
+    "name": "Read a book",
+    "user_id": 5,
+    "score": 20,
+    "category": "mental"
   }
 ]

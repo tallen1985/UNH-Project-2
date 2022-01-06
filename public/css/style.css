@@ -25,3 +25,9 @@ nav .prim li a {
   height: auto;
   margin: 0;
 }
+#userImage {
+  width: 20%;
+}
+.challengeImage {
+  width: 20%;
+}
