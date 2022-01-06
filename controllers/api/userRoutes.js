@@ -84,6 +84,25 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.put('/addScore', async (req, res) => {
+  
+  const scoreData = await User.increment(
+    { score: +req.body.score },
+    {
+      where: {
+        id: req.session.user_id,
+      },
+    }
+  );
+
+  if (!scoreData[0][1]) {
+    res.status(400).json({ Message: 'User score couldnt update' });
+    return;
+  }
+  
+  res.status(200).send(scoreData);
+});
+
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

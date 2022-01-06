@@ -23,6 +23,13 @@ router.put('/completed', authorize, async (req, res) => {
         },
       }
     );
+
+    if (!acceptedData) {
+      res.status(400).json({ Message: 'Accepted challenge couldnt update' });
+      return;
+    }
+    
+    res.status(200).send(acceptedData);
   } catch (error) {
     res
       .status(500)
@@ -36,7 +43,7 @@ router.post('/', authorize, async (req, res) => {
     const acceptedData = await Accepted.create({
       user_id: req.session.user_id,
       challenge_id: req.body.challenge_id,
-      expiresAt: req.body.expiresAt,
+      // expiresAt: req.body.expiresAt,
     });
 
     if (!acceptedData) {

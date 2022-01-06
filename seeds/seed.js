@@ -8,14 +8,14 @@ const acceptedData = require('./acceptedData.json')
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userData, {
+  await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
 
-  const challenges = await Challenge.bulkCreate(challengeData);
+  await Challenge.bulkCreate(challengeData);
 
-  const accepted = await Accepted.bulkCreate(acceptedData)
+  await Accepted.bulkCreate(acceptedData)
 
   process.exit(0);
 };
