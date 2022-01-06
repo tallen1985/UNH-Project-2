@@ -32,10 +32,6 @@ Accepted.init(
            defaultValue: false,
            allowNull: false,
        },
-    //    expiresAt: {// perhaps use a function to assist with this
-    //        type: DataTypes.TIME,
-    //        allowNull: true,
-    //    }
     },
     {
         sequelize,

@@ -1,3 +1,4 @@
+
 const challengeName = document.getElementById('challengeName');
 const categoryInput = document.getElementById('categoryInput');
 const postChallenge = document.getElementById('postChallenge');
@@ -30,4 +31,61 @@ postChallenge.addEventListener('click', async (e) => {
   } else {
     alert('Internal Server Error');
   }
+});
+
+const acceptChallengeHandler = async (event) => {
+  event.preventDefault();
+  const challengeId = event.currentTarget.dataset.id
+
+  const acceptChallenge = await fetch(`/api/accepted/`, {
+    method: 'POST',
+    body: JSON.stringify({
+      challenge_id: challengeId,
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (acceptChallenge.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Internal Server Error');
+  }
+}
+
+let accepted = document.querySelectorAll('#accept-challenge');
+accepted.forEach(function(item){
+    item.addEventListener('click', acceptChallengeHandler)
+});
+
+const completeChallengeHandler = async (event) => {
+  event.preventDefault();
+  const acceptedId = event.currentTarget.dataset.acceptedid
+  const score = event.currentTarget.dataset.score
+
+  const acceptChallenge = await fetch(`/api/accepted/completed`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      accepted_id: acceptedId
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  const scoreAdd = await fetch(`/api/user/addScore`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      score: score
+    }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (acceptChallenge.ok && scoreAdd.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Internal Server Error');
+  }
+}
+
+let completed = document.querySelectorAll('#complete-challenge');
+completed.forEach(function(item){
+    item.addEventListener('click', completeChallengeHandler)
 });

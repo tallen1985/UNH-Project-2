@@ -18,12 +18,25 @@ router.get('/', authorize, async (req, res, next) => {
     },
   });
 
+  const acceptedPull = await Accepted.findAll({
+    order: [['createdAt', 'DESC']],
+    where: {
+      user_id: req.session.user_id,
+    },
+    include: {
+      model: Challenge,
+    },
+  });
+
   if (!userPull) {
     res.redirect('/login');
   }
   const data = userPull.dataValues;
   const challenge = challengePull.map((challenge) =>
     challenge.get({ plain: true })
+  );
+  const accepted = acceptedPull.map((accepted) =>
+    accepted.get({ plain: true })
   );
   const userCreated = challenge.filter((c) => {
     return c.user_id === req.session.user_id;
@@ -33,6 +46,7 @@ router.get('/', authorize, async (req, res, next) => {
   res.render('index', {
     data,
     challenge,
+    accepted,
     userCreated,
     numCreated,
     logged_in: req.session.logged_in,
