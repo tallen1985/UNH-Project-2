@@ -49,11 +49,19 @@ router.get('/', authorize, async (req, res, next) => {
   const accepted = acceptedPull.map((accepted) =>
     accepted.get({ plain: true })
   );
+
+  const completed = accepted.filter((challenge) => {
+    if (challenge.completed) {
+      return challenge;
+    }
+  });
+  const numCompleted = completed.length;
+
   const userCreated = challenge.filter((c) => {
     return c.user_id === req.session.user_id;
   });
   const numCreated = userCreated.length;
-
+  
   const highscore = highscoreData.map((score) =>
     score.get({ plain: true })
   );
@@ -64,6 +72,7 @@ router.get('/', authorize, async (req, res, next) => {
     accepted,
     userCreated,
     numCreated,
+    numCompleted,
     challengeByType,
     logged_in: req.session.logged_in,
     user_name: req.session.user_name,
