@@ -39,13 +39,20 @@
           <div class='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul class='navbar-nav me-auto mb-2 mb-lg-0 prim'>
               <li class='nav-item'>
-                <a class='nav-link' aria-current='page' href='#'>Popular
-                  Challenges</a>
+                {{!-- highscores modal reference --}}
+                <a 
+                class='nav-link' 
+                aria-current='page'
+                data-bs-toggle='modal'
+                data-bs-target='#highscores'
+                style='color: #fff; cursor: pointer;'>
+                High Scores</a>
               </li>
             </ul>
             <div class='d-flex'>
               <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
                 <li class='nav-item'>
+                  {{!-- post challenge modal reference --}}
                   <a
                     class='nav-link'
                     aria-current='page'
@@ -165,6 +172,41 @@
             id='postChallenge'
             class='btn btn-primary'
           >Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{!-- highscore modal --}}
+  <div
+    class='modal fade'
+    id='highscores'
+    data-bs-backdrop='static'
+    data-bs-keyboard='false'
+    tabindex='-1'
+    aria-labelledby='staticBackdropLabel'
+    aria-hidden='true'
+  >
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h5 class='modal-title' id='staticBackdropLabel'>Highscores</h5>
+        </div>
+        <div class='modal-body'>
+          <ol>
+            {{#each highscore}}
+            <li>
+              <h4>{{name}}: {{score}}</h4>
+            </li>
+            {{/each}}
+          </ol>
+          
+        </div>
+        <div class='modal-footer'>
+          <button
+            type='button'
+            class='btn btn-secondary'
+            data-bs-dismiss='modal'
+          >Cancel</button>
         </div>
       </div>
     </div>

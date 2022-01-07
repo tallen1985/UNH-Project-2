@@ -10,6 +10,11 @@ router.get('/', authorize, async (req, res, next) => {
     include: [{ model: Accepted }],
   });
 
+  const highscoreData = await User.findAll({
+    order: [['score', 'DESC']],
+    attributes: ['score', 'name'],
+  });
+
   const challengePull = await Challenge.findAll({
     order: [['createdAt', 'DESC']],
     include: {
@@ -35,6 +40,7 @@ router.get('/', authorize, async (req, res, next) => {
   const challenge = challengePull.map((challenge) =>
     challenge.get({ plain: true })
   );
+
   const challengeByType = {
     physical: challenge.filter((c) => c.category == 'physical'),
     mental: challenge.filter((c) => c.category == 'mental'),
@@ -48,9 +54,13 @@ router.get('/', authorize, async (req, res, next) => {
   });
   const numCreated = userCreated.length;
 
+  const highscore = highscoreData.map((score) =>
+    score.get({ plain: true })
+  );
   res.render('index', {
     data,
     challenge,
+    highscore,
     accepted,
     userCreated,
     numCreated,
