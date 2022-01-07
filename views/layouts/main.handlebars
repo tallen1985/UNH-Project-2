@@ -40,6 +40,7 @@
             <ul class='navbar-nav me-auto mb-2 mb-lg-0 prim'>
               <li class='nav-item'>
                 {{!-- highscores modal reference --}}
+                {{#if logged_in}}
                 <a 
                 class='nav-link' 
                 aria-current='page'
@@ -47,12 +48,14 @@
                 data-bs-target='#highscores'
                 style='color: #fff; cursor: pointer;'>
                 High Scores</a>
+                {{/if}}
               </li>
             </ul>
             <div class='d-flex'>
               <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
                 <li class='nav-item'>
                   {{!-- post challenge modal reference --}}
+                  {{#if logged_in}}
                   <a
                     class='nav-link'
                     aria-current='page'
@@ -60,8 +63,10 @@
                     data-bs-target='#createnewchallenge'
                     style='color: #fff; cursor: pointer;'
                   >Post a challenge</a>
+                  {{/if}}
                 </li>
                 <li class='nav-item dropdown'>
+                  {{#if logged_in}}
                   <a
                     class='nav-link dropdown-toggle'
                     href='#'
@@ -80,6 +85,7 @@
                       >Dashboard</a></li>
                     <li><hr class='dropdown-divider' /></li>
                     <li><a class='dropdown-item' id='logoutBtn'>Logout</a></li>
+                  {{/if}}
                   </ul>
                 </li>
               </ul>

@@ -36,7 +36,26 @@ postChallenge.addEventListener('click', async (e) => {
 const acceptChallengeHandler = async (event) => {
   event.preventDefault();
   const challengeId = event.currentTarget.dataset.id
+  let cantAccept = false;
+  const compareChallenge = await fetch(`/api/accepted/`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(message || response.status);
+    }
+  }).then((data) => {
+    data.forEach(accepted => {
+      if(accepted.challenge_id == challengeId) {
+        alert('Please enter a valid Point Value (between 1 and 20)');
+        cantAccept = true;
+      }
+    });
+  })
 
+if (!cantAccept) {
   const acceptChallenge = await fetch(`/api/accepted/`, {
     method: 'POST',
     body: JSON.stringify({
@@ -51,11 +70,7 @@ const acceptChallengeHandler = async (event) => {
     alert('Internal Server Error');
   }
 }
-
-let accepted = document.querySelectorAll('#accept-challenge');
-accepted.forEach(function(item){
-    item.addEventListener('click', acceptChallengeHandler)
-});
+}
 
 const completeChallengeHandler = async (event) => {
   event.preventDefault();
@@ -84,6 +99,11 @@ const completeChallengeHandler = async (event) => {
     alert('Internal Server Error');
   }
 }
+
+let accepted = document.querySelectorAll('#accept-challenge');
+accepted.forEach(function(item){
+    item.addEventListener('click', acceptChallengeHandler)
+});
 
 let completed = document.querySelectorAll('#complete-challenge');
 completed.forEach(function(item){
