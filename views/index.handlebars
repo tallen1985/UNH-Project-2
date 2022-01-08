@@ -68,7 +68,7 @@
         <div class='col-md-5 mt-2'>
           <div class='row'>
             {{#each challenge}}
-              <div class='col-md-12 challengeBox' >
+              <div class='col-md-12 challengeBox my-3' >
                 <div
                   class='text-center d-flex flex-column justify-content-evenly border rounded'
                   style='background-color: #fff; height: 300px;'
@@ -85,7 +85,7 @@
                     <button id='accept-challenge' class='btn btn-sm btn-primary' data-id={{id}}>Accept Challenge!</button>
                   </div>
                 </div>
-                <div
+                {{!-- <div
                   class='row post_link'
                   style='padding: 15px 0; color: #fff; font-size: 17px; text-align: center;'
                 >
@@ -95,7 +95,7 @@
                   </div>
                   <div class='col-md-4'><a href=''>+5</a> Completed</div>
                   <div class='col-md-4'><a href=''>+2</a> Watch</div>
-                </div>
+                </div> --}}
               </div>
             {{/each}}
           </div>
