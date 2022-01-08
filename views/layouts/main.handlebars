@@ -22,9 +22,10 @@
         class='navbar navbar-expand-lg navbar-light sticky-top'
         style='background-color: #3D52d5'>
         <div class='container'>
-          <a class='navbar-brand' href='/' style='color: #fff'>BOOYA<span
-              style='font-weight: 700'
-            >!</span></a>
+          
+          <a class='navbar-brand' href='/' style='color: #fff'>
+            <img src="/images/booyalogo.png" alt="" width="100">
+          </a>
           <button
             class='navbar-toggler'
             type='button'
@@ -38,7 +39,11 @@
           </button>
           <div class='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul class='navbar-nav me-auto mb-2 mb-lg-0 prim'>
-              <li class='nav-item'>
+              
+            </ul>
+            <div class='d-flex'>
+              <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+                <li class='nav-item'>
                 {{!-- highscores modal reference --}}
                 {{#if logged_in}}
                 <a 
@@ -50,9 +55,6 @@
                 High Scores</a>
                 {{/if}}
               </li>
-            </ul>
-            <div class='d-flex'>
-              <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
                 <li class='nav-item'>
                   {{!-- post challenge modal reference --}}
                   {{#if logged_in}}
