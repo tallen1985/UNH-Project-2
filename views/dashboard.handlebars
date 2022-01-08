@@ -18,18 +18,28 @@
   <div class='bg-white text-dark text-center mx-5'>
     <div class='container'>
       <h2>Active Challenges</h2>
-      {{#if user.challenges}}
-        <li>{{challenges}}</li>
-      {{else}}
-        <li>No active challenges</li>
-      {{/if}}
+      {{#each accepted}}
+        {{#unless completed}}
+          <li
+            class='list-group-item d-flex justify-content-between align-items-start'
+          >
+            <div class='ms-2 me-auto'>
+              <div class='fw-bold'>{{challenge.name}}</div>
+              Score:
+              {{challenge.score}}
+            </div>
+          </li>
+        {{/unless}}
+      {{/each}}
     </div>
 
     <div class='container'>
       <h2>Created Challenges</h2>
       {{#if userCreated}}
         {{#each userCreated}}
-          <li>{{name}}</li>
+          <li
+            class='list-group-item d-flex justify-content-between align-items-start mb-3'
+          >{{name}}</li>
         {{/each}}
       {{else}}
         <li>No Created challenges</li>

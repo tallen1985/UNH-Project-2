@@ -61,10 +61,8 @@ router.get('/', authorize, async (req, res, next) => {
     return c.user_id === req.session.user_id;
   });
   const numCreated = userCreated.length;
-  
-  const highscore = highscoreData.map((score) =>
-    score.get({ plain: true })
-  );
+
+  const highscore = highscoreData.map((score) => score.get({ plain: true }));
   res.render('index', {
     data,
     challenge,
@@ -88,6 +86,20 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/dashboard', async (req, res) => {
+  const acceptedPull = await Accepted.findAll({
+    order: [['createdAt', 'DESC']],
+    where: {
+      user_id: req.session.user_id,
+    },
+    include: {
+      model: Challenge,
+    },
+  });
+
+  const accepted = acceptedPull.map((accepted) =>
+    accepted.get({ plain: true })
+  );
+
   const userPull = await User.findOne({
     where: {
       id: req.session.user_id,
@@ -106,7 +118,7 @@ router.get('/dashboard', async (req, res) => {
   if (!userPull) {
     res.redirect('/login');
   }
-  const data = userPull.dataValues;
+  const data = userPull.get({ plain: true });
   const challenge = challengePull.map((challenge) =>
     challenge.get({ plain: true })
   );
@@ -116,6 +128,7 @@ router.get('/dashboard', async (req, res) => {
   const numCreated = userCreated.length;
 
   res.render('dashboard', {
+    accepted,
     data,
     challenge,
     userCreated,
