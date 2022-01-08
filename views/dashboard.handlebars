@@ -15,30 +15,30 @@
     </div>
 
   </div>
-  <div class='bg-white text-dark text-center mx-5'>
+  <div class='bg-white text-dark text-center mx-5 p-3'>
     <div class='container'>
-      <h2>Active Challenges</h2>
+      <h2>Accepted Challenges</h2>
       {{#each accepted}}
         {{#unless completed}}
           <li
             class='list-group-item d-flex justify-content-between align-items-start'
           >
             <div class='ms-2 me-auto'>
-              <div class='fw-bold'>{{challenge.name}}</div>
-              Score:
-              {{challenge.score}}
+              <div class='''>
+                {{challenge.name}}
+              </div>
             </div>
           </li>
         {{/unless}}
       {{/each}}
     </div>
 
-    <div class='container'>
+    <div class='container mb-3'>
       <h2>Created Challenges</h2>
       {{#if userCreated}}
         {{#each userCreated}}
           <li
-            class='list-group-item d-flex justify-content-between align-items-start mb-3'
+            class='list-group-item d-flex justify-content-between align-items-start mb-3 ms-2 me-auto'
           >{{name}}</li>
         {{/each}}
       {{else}}
