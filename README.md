@@ -2,9 +2,9 @@
 
 BooYa!
 
-Gerard Kasemba
-Samantha Doherty
-Casen Luck
+Gerard Kasemba - 
+Samantha Doherty - 
+Casen Luck - 
 Troy Allen
 
 
@@ -28,41 +28,44 @@ will also have the opportunity to upload an image or short video of their comple
 ## Breakdown of Tasks
 
 API - Troy Allen
+
 Front End - Samatha Doherty
+
 Database - Casen Luck
+
 Gerard Image Stuff
+
 
 ## Wireframe and Tables
 ![Wireframe](wireframe.png)
 
-    ### Tables
-    #### User
-        -ID
-        -Password
-        -Name
-        -Image
-        -Score (def: 0)
+### Tables
+#### User
+- ID
+- Password
+- Name
+- Image
+- Score (def: 0)
 
 
-    #### Challenge
-        -id
-        -name
-        -user_id (ref: user.id)
-        -create_at (automatically made)
-        -score
+#### Challenge
+- id
+- name
+- user_id (ref: user.id)
+- create_at (automatically made)
+- score
+- category
 
-    #### Accepted
-        -ID
-        -user_id
-        -challenge_id (ref: challenge.id)
-        -expiresAt
-
-    #### Completed
-        -accepted_id (ref: accepted.id)
-        -user_id
-        -challenge_id (ref: challenge.id)
-        -link to media
+#### Accepted
+- ID
+- user_id
+- challenge_id (ref: challenge.id)
+- completed
 
 
 ## Link to project
- 
+[Link to Deployed Application](https://booya-unh-coding-bootcamp.herokuapp.com/)
+
+[Link to Github Repo](https://github.com/tallen1985/UNH-Project-2)
+
+![Screenshot](screenshot.jpg)
